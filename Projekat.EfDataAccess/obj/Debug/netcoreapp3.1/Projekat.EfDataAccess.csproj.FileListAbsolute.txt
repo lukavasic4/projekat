@@ -1,0 +1,15 @@
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.Domain.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.csprojAssemblyReference.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.AssemblyInfoInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.AssemblyInfo.cs
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.deps.json
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.runtimeconfig.json
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.runtimeconfig.dev.json
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\bin\Debug\netcoreapp3.1\Projekat.Domain.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.csproj.CopyComplete
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.EfDataAccess\obj\Debug\netcoreapp3.1\Projekat.EfDataAccess.genruntimeconfig.cache

@@ -1,0 +1,16 @@
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Application.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Domain.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.csprojAssemblyReference.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.AssemblyInfoInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.AssemblyInfo.cs
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Implementation.deps.json
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Implementation.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Implementation.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Application.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.EfDataAccess.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\bin\Debug\netcoreapp3.1\Projekat.Domain.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.csproj.CopyComplete
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Implementation\obj\Debug\netcoreapp3.1\Projekat.Implementation.pdb

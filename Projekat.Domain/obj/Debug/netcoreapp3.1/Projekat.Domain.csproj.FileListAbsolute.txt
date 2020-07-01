@@ -1,0 +1,9 @@
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\bin\Debug\netcoreapp3.1\Projekat.Domain.deps.json
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\bin\Debug\netcoreapp3.1\Projekat.Domain.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\bin\Debug\netcoreapp3.1\Projekat.Domain.pdb
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.csprojAssemblyReference.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.AssemblyInfoInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.AssemblyInfo.cs
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Domain\obj\Debug\netcoreapp3.1\Projekat.Domain.pdb
