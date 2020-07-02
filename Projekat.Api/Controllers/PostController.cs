@@ -40,7 +40,7 @@ namespace Projekat.Api.Controllers
         public void Post([FromBody] PostDto dto,
             [FromServices] ICreatePostCommand command)
         {
-                _executor.ExecuteCommand(command, dto);
+           _executor.ExecuteCommand(command, dto);
         }
 
         // PUT: api/Post/5

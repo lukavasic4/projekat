@@ -9,8 +9,9 @@ namespace Projekat.Application.DataTransfer
     {
         public string Title { get; set; }
         public string Text { get; set; }
-        public int IdPicture { get; set; }
-        public int IdUser { get; set; }
+        public int PictureId { get; set; }
+        public int UserId { get; set; }
+       
         public virtual ICollection<Category> Category { get; set; } 
     }
 }

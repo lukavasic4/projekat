@@ -6,6 +6,7 @@ using Projekat.Application.Commands;
 using Projekat.Application.DataTransfer;
 using Projekat.Application.Queries;
 using Projekat.Application.Searches;
+using Projekat.Domain;
 using Projekat.EfDataAccess;
 
 namespace Projekat.Implementation.Queries
@@ -17,18 +18,20 @@ namespace Projekat.Implementation.Queries
         {
             _context = context;
         }
-        public int Id => 4;
+        public int Id => 14;
 
         public string Name => "Post search using Ef";
 
         public PagedResponse<PostDto> Execute(PostSearch search)
         {
+           
             var query = _context.Posts.AsQueryable();
             if (!string.IsNullOrEmpty(search.Title) || !string.IsNullOrWhiteSpace(search.Title))
             {
                 query = query.Where(x => x.Title.ToLower().Contains(search.Title.ToLower()));
             }
             var skipCount = search.PerPage * (search.Page - 1);
+            
             var response = new PagedResponse<PostDto>
             {
                 CurrentPage = search.Page,
@@ -36,7 +39,10 @@ namespace Projekat.Implementation.Queries
                 TotalCount = query.Count(),
                 Items = query.Skip(skipCount).Take(search.PerPage).Select(x => new PostDto
                 {
-                    Title = x.Title
+                    Title = x.Title,
+                    Text = x.Text,
+                    
+
                 }).ToList()
             };
             return response;

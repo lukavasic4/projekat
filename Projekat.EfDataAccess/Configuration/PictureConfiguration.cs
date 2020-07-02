@@ -15,7 +15,6 @@ namespace Projekat.EfDataAccess.Configuration
                 .IsRequired();
             builder.Property(x => x.Alt)
                 .IsRequired();
-            builder.HasMany(x => x.Posts).WithOne(p => p.Picture).HasForeignKey(p => p.IdPicture);
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Projekat.Domain
         public string Password { get; set; }
         public string Username { get; set; }
         public virtual ICollection<UserUseCase> UserUseCases { get; set; }
-      
 
     }
 }

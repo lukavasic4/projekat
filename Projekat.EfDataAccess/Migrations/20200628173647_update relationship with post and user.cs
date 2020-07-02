@@ -19,14 +19,14 @@ namespace Projekat.EfDataAccess.Migrations
                 table: "Posts");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_IdUser",
+                name: "IX_Posts_UserId",
                 table: "Posts",
                 column: "IdUser");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Posts_Users_IdUser",
+                name: "FK_Posts_Users_UserId",
                 table: "Posts",
-                column: "IdUser",
+                column: "UserId",
                 principalTable: "Users",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -35,11 +35,11 @@ namespace Projekat.EfDataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Posts_Users_IdUser",
+                name: "FK_Posts_Users_UserId",
                 table: "Posts");
 
             migrationBuilder.DropIndex(
-                name: "IX_Posts_IdUser",
+                name: "IX_Posts_UserId",
                 table: "Posts");
 
             migrationBuilder.AddColumn<int>(
@@ -49,7 +49,7 @@ namespace Projekat.EfDataAccess.Migrations
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_UserId",
+                name: "IX_Posts_IdUser",
                 table: "Posts",
                 column: "UserId");
 

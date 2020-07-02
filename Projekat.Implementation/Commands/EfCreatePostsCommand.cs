@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
-using Projekat.Application;
 using Projekat.Application.Commands;
 using Projekat.Application.DataTransfer;
 using Projekat.Domain;
@@ -11,11 +10,12 @@ using Projekat.Implementation.Validation;
 
 namespace Projekat.Implementation.Commands
 {
-    public class EfCreatePostCommand : ICreatePostCommand
+    public class EfCreatePostsCommand : ICreatePostCommand
     {
         private readonly ProjekatContext _context;
         private readonly CreatePostValidation _validator;
-        public EfCreatePostCommand(ProjekatContext context, CreatePostValidation validator)
+
+        public EfCreatePostsCommand(ProjekatContext context, CreatePostValidation validator)
         {
             _context = context;
             _validator = validator;
@@ -24,25 +24,24 @@ namespace Projekat.Implementation.Commands
 
         public string Name => "Create post using Ef";
 
-       public void Execute(PostDto request)
+        public void Execute(PostDto request)
         {
             _validator.ValidateAndThrow(request);
             var post = new Post
             {
-                Title = request.Title,
                 Text = request.Text,
-                IdUser = request.IdUser,
-                IdPicture = request.IdPicture
+                Title = request.Title,
+                PictureId = request.PictureId,
+                UserId = request.UserId
             };
             _context.Posts.Add(post);
             _context.SaveChanges();
-            foreach (var c in request.Category)
+            foreach(var c in request.Category)
             {
                 var categories = new CategoryPost
                 {
-                    IdPost = post.Id,
-                    IdCategory = c.Id
-
+                    PostId = post.Id,
+                    CategoryId = c.Id
                 };
                 _context.CategoryPost.Add(categories);
                 _context.SaveChanges();

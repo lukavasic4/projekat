@@ -6,8 +6,8 @@ namespace Projekat.Domain
 {
     public class CategoryPost : Entity
     {
-        public int IdCategory{ get; set; }
-        public int IdPost { get; set; }
+        public int CategoryId{ get; set; }
+        public int PostId { get; set; }
         public virtual Category Category { get; set; }
         public virtual Post Post { get; set; }
     }

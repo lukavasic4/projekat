@@ -7,5 +7,7 @@ namespace Projekat.Application.DataTransfer
     public class CommentDto
     {
         public string TextComment { get; set; }
+        public int PostId { get; set; }
+        public int UserId { get; set; }
     }
 }

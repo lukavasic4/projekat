@@ -8,6 +8,5 @@ namespace Projekat.Domain
     {
         public string Src { get; set; }
         public string Alt { get; set; }
-        public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
     }
 }

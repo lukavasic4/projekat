@@ -8,21 +8,27 @@
       "sslPort": 0
     }
   },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Projekat.Api": {
-      "commandName": "Project",
-      "applicationUrl": "http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+    "profiles": {
+        "Dev": {
+            "commandName": "Project",
+            "applicationUrl": "http://0.0.0.0:5101",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Uat": {
+            "commandName": "Project",
+            "applicationUrl": "http://0.0.0.0:5101",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Uat"
+            }
+        },
+        "Prod": {
+            "commandName": "Project",
+            "applicationUrl": "http://0.0.0.0:5101",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            }
+        }
     }
-  }
 }

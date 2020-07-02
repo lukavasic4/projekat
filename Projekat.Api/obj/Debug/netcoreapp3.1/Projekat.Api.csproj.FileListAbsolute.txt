@@ -139,7 +139,14 @@ C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Microso
 C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Luka\source\repos\Projekat\Projekat.Api\obj\Debug\netcoreapp3.1\Projekat.Api.csproj.CoreCompileInputs.cache
-C:\Users\Luka\source\repos\Projekat\Projekat.Api\obj\Debug\netcoreapp3.1\Projekat.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\appsettings.Production.json
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\appsettings.Uat.json
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\obj\Debug\netcoreapp3.1\Projekat.Api.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\obj\Debug\netcoreapp3.1\Projekat.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Luka\source\repos\Projekat\Projekat.Api\obj\Debug\netcoreapp3.1\Projekat.Api.MvcApplicationPartsAssemblyInfo.cache

@@ -11,7 +11,7 @@ namespace Projekat.EfDataAccess.Migrations
                 table: "Posts");
 
             migrationBuilder.AddColumn<int>(
-                name: "IdPicture",
+                name: "PictureId",
                 table: "Posts",
                 nullable: false,
                 defaultValue: 0);
@@ -20,7 +20,7 @@ namespace Projekat.EfDataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IdPicture",
+                name: "PictureId",
                 table: "Posts");
 
             migrationBuilder.AddColumn<string>(

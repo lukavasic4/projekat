@@ -51,7 +51,7 @@ namespace Projekat.EfDataAccess
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<UserUseCase> UserUseCases { get; set; }
         public DbSet<UseCaseLog> UseCaseLogs { get; set; }
-        
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Rate> Rates { get; set; }
     }
 }

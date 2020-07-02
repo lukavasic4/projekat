@@ -17,7 +17,7 @@ namespace Projekat.Implementation.Commands
         {
             _context = context;
         }        
-        public int Id => 8;
+        public int Id => 9;
 
         public string Name =>"Get category using Ef";
 

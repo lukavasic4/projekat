@@ -15,7 +15,7 @@ namespace Projekat.EfDataAccess.Configuration
             builder.HasIndex(x => x.Name).IsUnique();
             builder.Property(x => x.Name).IsRequired();
 
-            builder.HasMany(c => c.CategoryPost).WithOne(cp => cp.Category).HasForeignKey(cp => cp.IdCategory).OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(c => c.CategoryPost).WithOne(cp => cp.Category).HasForeignKey(cp => cp.CategoryId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

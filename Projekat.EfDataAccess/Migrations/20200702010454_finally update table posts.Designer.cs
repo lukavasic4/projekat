@@ -10,8 +10,8 @@ using Projekat.EfDataAccess;
 namespace Projekat.EfDataAccess.Migrations
 {
     [DbContext(typeof(ProjekatContext))]
-    [Migration("20200701135621_new table comment")]
-    partial class newtablecomment
+    [Migration("20200702010454_finally update table posts")]
+    partial class finallyupdatetableposts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,10 +69,10 @@ namespace Projekat.EfDataAccess.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCategory")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPost")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -84,11 +84,14 @@ namespace Projekat.EfDataAccess.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCategory");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("IdPost");
+                    b.HasIndex("PostId");
 
                     b.ToTable("CategoryPost");
                 });
@@ -175,13 +178,64 @@ namespace Projekat.EfDataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<float>("AverageRate")
+                        .HasColumnType("real");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdPicture")
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PictureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PictureId");
+
+                    b.HasIndex("Title")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Projekat.Domain.Rate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdPost")
                         .HasColumnType("int");
 
                     b.Property<int>("IdUser")
@@ -196,27 +250,22 @@ namespace Projekat.EfDataAccess.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Number")
+                        .HasColumnType("real");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPicture");
-
-                    b.HasIndex("Title")
-                        .IsUnique();
+                    b.HasIndex("PostId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Rates");
                 });
 
             modelBuilder.Entity("Projekat.Domain.UseCaseLog", b =>
@@ -323,15 +372,13 @@ namespace Projekat.EfDataAccess.Migrations
                 {
                     b.HasOne("Projekat.Domain.Category", "Category")
                         .WithMany("CategoryPost")
-                        .HasForeignKey("IdCategory")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Projekat.Domain.Post", "Post")
                         .WithMany("CategoryPost")
-                        .HasForeignKey("IdPost")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Projekat.Domain.Comment", b =>
@@ -353,9 +400,22 @@ namespace Projekat.EfDataAccess.Migrations
                 {
                     b.HasOne("Projekat.Domain.Picture", "Picture")
                         .WithMany("Posts")
-                        .HasForeignKey("IdPicture")
+                        .HasForeignKey("PictureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Projekat.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Projekat.Domain.Rate", b =>
+                {
+                    b.HasOne("Projekat.Domain.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
 
                     b.HasOne("Projekat.Domain.User", "User")
                         .WithMany()

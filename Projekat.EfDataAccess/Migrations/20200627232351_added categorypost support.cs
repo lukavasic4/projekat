@@ -30,35 +30,35 @@ namespace Projekat.EfDataAccess.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    IdCategory = table.Column<int>(nullable: false),
-                    IdPost = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false),
+                    PostId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoryPost", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CategoryPost_Categories_IdCategory",
-                        column: x => x.IdCategory,
+                        name: "FK_CategoryPost_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryPost_Posts_IdPost",
-                        column: x => x.IdPost,
+                        name: "FK_CategoryPost_Posts_PostId",
+                        column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryPost_IdCategory",
+                name: "IX_CategoryPost_CategoryId",
                 table: "CategoryPost",
-                column: "IdCategory");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryPost_IdPost",
+                name: "IX_CategoryPost_PostId",
                 table: "CategoryPost",
-                column: "IdPost");
+                column: "PostId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

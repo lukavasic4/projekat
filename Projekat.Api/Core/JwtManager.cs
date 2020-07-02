@@ -51,7 +51,7 @@ namespace Projekat.Api.Core
                 audience: "Any",
                 claims: claims,
                 notBefore: now,
-                expires: now.AddSeconds(30),
+                expires: now.AddSeconds(600),
                 signingCredentials: crendentials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);

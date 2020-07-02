@@ -69,10 +69,10 @@ namespace Projekat.EfDataAccess.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCategory")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPost")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -86,9 +86,9 @@ namespace Projekat.EfDataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCategory");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("IdPost");
+                    b.HasIndex("PostId");
 
                     b.ToTable("CategoryPost");
                 });
@@ -127,12 +127,12 @@ namespace Projekat.EfDataAccess.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("IdUser")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("IdUser");
 
                     b.ToTable("Posts");
                 });
@@ -183,13 +183,13 @@ namespace Projekat.EfDataAccess.Migrations
                 {
                     b.HasOne("Projekat.Domain.Category", "Category")
                         .WithMany("CategoryPost")
-                        .HasForeignKey("IdCategory")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Projekat.Domain.Post", "Post")
                         .WithMany("CategoryPost")
-                        .HasForeignKey("IdPost")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -198,7 +198,9 @@ namespace Projekat.EfDataAccess.Migrations
                 {
                     b.HasOne("Projekat.Domain.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

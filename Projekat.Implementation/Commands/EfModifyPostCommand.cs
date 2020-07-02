@@ -35,6 +35,8 @@ namespace Projekat.Implementation.Commands
             }
             post.Title = request.Title;
             post.Text = request.Text;
+            post.PictureId = request.PictureId;
+            post.UserId = request.UserId;
             _context.SaveChanges();
         }
     }

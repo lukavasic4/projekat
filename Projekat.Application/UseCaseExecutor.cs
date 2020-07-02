@@ -34,6 +34,15 @@ namespace Projekat.Application
             }
             command.Execute(request, id);
         }
+        public void ExecuteCommandRate<TRequest>(ICommandRate<TRequest, int> command, TRequest request, int id)
+        {
+            logger.Log(command, actor, id);
+            if (!actor.AllowedUseCases.Contains(command.Id))
+            {
+                throw new UnauthorizedUseCaseException(command, actor);
+            }
+            command.Execute(request, id);
+        }
         public TResult ExecuteQuery<TSearch,TResult>(IQuery<TSearch,TResult>query,TSearch search)
         {
             logger.Log(query, actor,search);

@@ -16,11 +16,11 @@ namespace Projekat.Api.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly UseCaseExecutor _executor;
-        private readonly IApplicationActor _actor;
-        public CategoryController(UseCaseExecutor executor, IApplicationActor actor)
+        
+        public CategoryController(UseCaseExecutor executor)
         {
             _executor = executor;
-            _actor = actor;
+           
         }
         // GET: api/Category
         [HttpGet]
@@ -37,7 +37,6 @@ namespace Projekat.Api.Controllers
         }
 
         // POST: api/Category
-        [Authorize]
         [HttpPost]
         public void Post([FromBody] CategoryDto dto,
             [FromServices] ICreateCategoryCommand command)

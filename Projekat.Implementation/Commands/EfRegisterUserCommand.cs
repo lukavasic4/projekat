@@ -5,6 +5,7 @@ using FluentValidation;
 using Projekat.Application.Commands;
 using Projekat.Application.DataTransfer;
 using Projekat.Application.Email;
+using Projekat.Domain;
 using Projekat.EfDataAccess;
 using Projekat.Implementation.Validation;
 
@@ -28,15 +29,17 @@ namespace Projekat.Implementation.Commands
 
         public void Execute(RegisterUserDto request)
         {
+            var cases = new List<int> { 14,19,16 };
             _validator.ValidateAndThrow(request);
-            _context.Users.Add(new Domain.User
+            var user = new User
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
                 Password = request.Password,
                 Username = request.Username
-            });
+            };
+            _context.Users.Add(user);
             _context.SaveChanges();
             _sender.Send(new SendEmailDto
             {
@@ -44,6 +47,16 @@ namespace Projekat.Implementation.Commands
                 SendTo = request.Email,
                 Subject = "Registration"
             });
+            foreach(var i in cases)
+            {
+                var userUseCase = new UserUseCase
+                {
+                    UseCaseId = i,
+                    UserId = user.Id
+                };
+                _context.Add(userUseCase);
+            }
+            _context.SaveChanges();
         }
     }
 }

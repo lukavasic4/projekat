@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Projekat.Api.Core;
 using Projekat.Application;
@@ -41,72 +43,54 @@ namespace Projekat.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var appSettings = new AppSettings();
+
+            Configuration.Bind(appSettings);
+
             services.AddControllers();
             services.AddTransient<ProjekatContext>();
-            services.AddTransient<CreateCategoryValidation>();
-            services.AddTransient<ModifyCategoryValidation>();
-            services.AddTransient<CreatePostValidation>();
-            services.AddTransient<ModifyPostValidation>();
-            services.AddTransient<CreateUserValidation>();
-            services.AddTransient<ModifyUserValidation>();
-            services.AddTransient<RegisterUserValidator>();
-            services.AddTransient<UseCaseExecutor>();
             services.AddTransient<JwtManager>();
             services.AddTransient<IUseCaseLogger, DatabaseUseCaseLogger>();
             services.AddTransient<CategoryConfiguration>();
             services.AddTransient<PostConfiguration>();
-            services.AddTransient<ICreateCategoryCommand, EfCreateCategoryCommand>();
-            services.AddTransient<IDeleteCategoryCommand, EfDeleteCategoryCommand>();
-            services.AddTransient<IModifyCategoryCommand, EfModifyCategoryCommand>();
-            services.AddTransient<IGetCategoryQuery, EfGetCategoryQuery>();
-            services.AddTransient<ICreatePostCommand, EfCreatePostCommand>();
-            services.AddTransient<IDeletePostCommand, EfDeletePostCommand>();
-            services.AddTransient<IModifyPostCommand, EfModifyPostCommand>();
-            services.AddTransient<IGetPostsQuery, EfGetPostsQuery>();
-            services.AddTransient<IGetPostQuery, EfGetPostQuery>();
-            services.AddTransient<ICreateUserCommand, EfCreateUserCommand>();
-            services.AddTransient<IDeleteUserCommand, EfDeleteUserCommand>();
-            services.AddTransient<IModifyUserCommand, EfModifyUserCommand>();
-            services.AddTransient<IGetUserQuery, EfGetUserQuery>();
-            services.AddTransient<ICreatePictureCommand, EfCreatePictureCommand>();
-            services.AddTransient<IRegisterUserCommand, EfRegisterUserCommand>();
 
-            services.AddTransient<IEmailSender, SmtpEmailSender>();
+            services.AddUsesCases();
 
             services.AddHttpContextAccessor();
-            services.AddTransient<IApplicationActor>(x =>
+            services.AddApplicationActor();
+            services.AddJwt();
+            services.AddSwaggerGen(c =>
             {
-                var accessor = x.GetService<IHttpContextAccessor>();
-                var user = accessor.HttpContext.User;
-                if(user.FindFirst("ActorData") == null)
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Projekat", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    return new AnonymousActor();
-                }
-                var actorString = user.FindFirst("ActorData").Value;
-                var actor = JsonConvert.DeserializeObject<JwtActor>(actorString);
-                return actor;
-            });
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(cfg =>
-            {
-                cfg.RequireHttpsMetadata = false;
-                cfg.SaveToken = true;
-                cfg.TokenValidationParameters = new TokenValidationParameters
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
-                    ValidIssuer = "asp_api",
-                    ValidateIssuer = true,
-                    ValidAudience = "Any",
-                    ValidateAudience = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsMyVerySecretKey")),
-                    ValidateIssuerSigningKey = true,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
-                };
+                    {
+                        new OpenApiSecurityScheme
+                          {
+                            Reference = new OpenApiReference
+                              {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                              },
+                              Scheme = "oauth2",
+                              Name = "Bearer",
+                              In = ParameterLocation.Header,
+
+                            },
+                            new List<string>()
+                          }
+                    });
             });
         }
 
@@ -119,6 +103,13 @@ namespace Projekat.Api
             }
 
             app.UseRouting();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger");
+            });
+
 
             app.UseAuthorization();
             app.UseMiddleware<GlobalExceptionHandler>();

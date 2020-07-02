@@ -19,7 +19,7 @@ namespace Projekat.EfDataAccess.Configuration
             builder.Property(x => x.Text)
                 .IsRequired();
                 
-            builder.HasMany(p => p.CategoryPost).WithOne(cp => cp.Post).HasForeignKey(cp => cp.IdPost).OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(p => p.CategoryPost).WithOne(cp => cp.Post).HasForeignKey(cp => cp.PostId).OnDelete(DeleteBehavior.Restrict);
             
         }
     }

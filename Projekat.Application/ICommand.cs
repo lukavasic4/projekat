@@ -21,4 +21,8 @@ namespace Projekat.Application
     {
         void Execute(TRequest request, TInt id);
     }
+    public interface ICommandRate<TRequest, TInt> : IUseCase
+    {
+        void Execute(TRequest request, TInt id);
+    }
 }

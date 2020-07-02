@@ -33,7 +33,7 @@ namespace Projekat.EfDataAccess.Configuration
             builder.Property(x => x.Username)
               .IsRequired();
 
-           
+           // builder.HasMany(u => u.Posts).WithOne(p => p.User).HasForeignKey(p => p.IdUser);
         }
     }
 }
